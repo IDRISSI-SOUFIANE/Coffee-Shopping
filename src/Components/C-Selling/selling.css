@@ -1,0 +1,163 @@
+/*=> *THE ALL PROPERTIES HERITE FROM SECTION COMPONENT CAUE THE HAVE SAME CLASSES*/
+/*=> *SO IM JUST MAKE SOME HANDLE FOR THE NEDDED */
+
+.mainSelling {
+  background-color: mintcream;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.mainSelling .introduce {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mainSelling .introduce h2 {
+  color: var(--smain);
+}
+
+.mainSelling .introduce p {
+  color: #ffc133;
+  width: 550px;
+}
+
+.mainSelling .boxes {
+  background: #ead9cd;
+  margin: 20px 50px;
+  overflow: auto;
+  padding: 30px;
+  height: 584px;
+  border-radius: 10px;
+}
+
+.mainSelling .boxes::-webkit-scrollbar {
+  width: 10px;
+}
+
+.mainSelling .boxes::-webkit-scrollbar-track {
+  background-color: #dcbfaa;
+  box-shadow: 0 0 10px #ddd inset;
+}
+
+.mainSelling .boxes::-webkit-scrollbar-thumb {
+  background-color: var(--main);
+  border-radius: 10px;
+}
+
+.mainSelling .boxes::-webkit-scrollbar-thumb:hover {
+  background-color: var(--smain);
+}
+
+.mainSelling .boxes .box {
+  height: 290px;
+  width: 180px;
+  position: relative;
+  padding: 7px;
+}
+
+.mainSelling .boxes .box .image {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* .mainSelling .boxes .box .image img {
+} */
+
+.mainSelling .boxes .box p {
+  margin: 6px;
+  padding: 0px 3px;
+  width: 100%;
+}
+
+.mainSelling .boxes .box p.child2 {
+  color: #664d03;
+  font-weight: bold;
+}
+
+.mainSelling .boxes .box p.child1 {
+  border: 1px solid var(--smain);
+  border-radius: 20px;
+}
+
+.mainSelling .boxes .box .info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.mainSelling .boxes .box .info span {
+  flex-basis: 40%;
+}
+
+.mainSelling .boxes .box .info i {
+  cursor: pointer;
+}
+
+.mainSelling .boxes .box i.fa-heart {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.mainSelling .boxes .box .heart.active > i.fa-heart {
+  color: red;
+}
+
+.mainSelling .boxes .box i.bag {
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--smain);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.mainSelling .boxes .box:hover i.bag {
+  animation: vapBag 0.8s linear infinite;
+}
+
+@keyframes vapBag {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  50% {
+    transform: rotate(-35deg);
+  }
+
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+/* ==== MEDIA QUERY ==== */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 810px) {
+  .mainSelling .introduce h2 {
+    text-align: center;
+  }
+  .mainSelling .introduce p {
+    text-align: center;
+    width: 400px;
+    text-align: center;
+  }
+  .mainSelling .boxes {
+    /* flex-direction: column; */
+    /* text-align: center; */
+    padding: 9px;
+  }
+}
+
+/* ==== MEDIA QUERY ==== */
