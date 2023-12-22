@@ -9,10 +9,9 @@ import { createContext, useState } from "react";
 import Header from "./Components/C-Header/Header";
 import Section from "./Components/C-Section/Section";
 import Selling from "./Components/C-Selling/Selling";
+import Team from "./Components/C-Team/Team";
 
 import dataProduct from "../src/Data-Api/product";
-
-// console.log(dataProduct);
 
 export const AppContext = createContext();
 
@@ -23,8 +22,6 @@ function App() {
 
   const [numberBuy, setNumberBuy] = useState(null);
 
-  console.log(numberlove);
-
   return (
     <>
       <Header numberlove={numberlove} numberBuy={numberBuy} />
@@ -33,6 +30,8 @@ function App() {
       <AppContext.Provider value={{ products }}>
         <Selling setNumberLove={setNumberLove} setNumberBuy={setNumberBuy} />
       </AppContext.Provider>
+
+      <Team />
     </>
   );
 }

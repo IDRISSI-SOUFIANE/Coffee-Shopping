@@ -1,0 +1,79 @@
+.mainTeam {
+  background-color: red;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.mainTeam .intro {
+  margin-top: var(--mrg-top);
+  margin-bottom: 50px;
+}
+
+.mainTeam .boxex {
+  gap: 20px;
+}
+
+.mainTeam .boxex .box {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 350px;
+  height: 505px;
+  overflow: hidden;
+  position: relative;
+}
+.mainTeam .boxex .box .infoIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transform: translateY(10px);
+  background-color: red;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: 1s;
+}
+
+/* .mainTeam .boxex .box .infoIcon i {} */
+
+.mainTeam .boxex .box .infoIcon.active {
+  width: calc(90%);
+  height: calc(50%);
+  border-radius: 0px;
+}
+
+.mainTeam .boxex .image {
+  overflow: hidden;
+}
+
+.mainTeam .boxex .image img {
+  width: 350px;
+  border-radius: 8px;
+}
+
+.mainTeam .boxex .box .information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: var(--main-transition);
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  margin-right: -20px;
+  /* display: none; */
+}
+
+.mainTeam .boxex .box .information h4 {
+  color: green;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.mainTeam .boxex .box .information p.desc {
+  color: green;
+  width: 290px;
+}

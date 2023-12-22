@@ -11,61 +11,64 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
 
   const [love, setLove] = useState(initialLove);
 
+  //==================================================================\\
+
   const initialBuying = JSON.parse(localStorage.getItem("buy")) || [];
 
   const [buying, setBuying] = useState(initialBuying);
 
-  console.log(buying);
+  //  =====   ================== ========== ============== ============================\\
+  //  =====   ================== ========== ============== ============   ===============\\
 
-  // ==============     ================= \\
-  // ==============     ================= \\
   useEffect(() => {
     const numberOfBuy = buying.map((n) => parseInt(n.n_buy));
-    const result = numberOfBuy.reduce(function (acc, current) {
-      return acc + current;
-    });
-    console.log(numberOfBuy);
-    console.log(result);
+
+    const sumArray = (array) => {
+      let sum = 0;
+
+      for (const num of array) {
+        sum += num;
+      }
+      return sum;
+    };
+
+    const result = sumArray(numberOfBuy);
+
+    // console.log(numberOfBuy);
+    // console.log(result);
     setNumberBuy(result);
   }, [buying, setNumberBuy]);
 
-  // useEffect(() => {
-  //   const numberOfBuy = buying.map((n) => parseInt(n.n_buy));
-
-  //   // Custom function to sum the array elements
-  //   const sumArray = (array) => {
-  //     let sum = 0;
-  //     for (const num of array) {
-  //       sum += num;
-  //     }
-  //     return sum;
-  //   };
-
-  //   // Use the custom function to calculate the sum
-  //   const result = sumArray(numberOfBuy);
-
-  //   console.log(numberOfBuy);
-  //   console.log(result);
-  //   setNumberBuy(result);
-  // }, [buying, setNumberBuy]);
+  //   useEffect(() => {
+  //     const numberOfBuy = buying.map((n) => parseInt(n.n_buy));
+  //     const result = numberOfBuy.reduce(function (acc, current) {
+  //       return acc + current;
+  //     });
+  //     setNumberBuy(result);
+  //   }, [buying, setNumberBuy]);
 
   const buy = (id) => {
     let productBuy = products.map((p) => {
       if (p._id == id) {
+        p.effect = !p.effect;
+      }
+
+      if (p.effect == true) {
         return { ...p, n_buy: p.n_buy + 1 };
       }
 
       return p;
     });
 
-    console.log(productBuy);
+    // console.log(productBuy);
     setBuying(productBuy);
 
     // Save the state to localStorage
     localStorage.setItem("buy", JSON.stringify(productBuy));
   };
 
-  //  =====        ======          =====   ====     ========     =======
+  //  =====   ================== ========== ============== == ============   ====     ========     =======\\
+  //  =====   ================== ========== ============== == ============   ====     ========     =======\\
 
   useEffect(() => {
     const newNumbers = love.map((n) => parseInt(n.number));
@@ -82,8 +85,8 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
     // Use the custom function to calculate the sum
     const result = sumArray(newNumbers);
 
-    console.log(newNumbers);
-    console.log(result);
+    // console.log(newNumbers);
+    // console.log(result);
     setNumberLove(result);
   }, [love, setNumberLove]);
 
@@ -100,12 +103,15 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
       return p;
     });
 
-    console.log(newProducts);
+    // console.log(newProducts);
     setLove(newProducts);
 
     // Save the state to localStorage
     localStorage.setItem("love", JSON.stringify(newProducts));
   };
+
+  //  ===== ================== ========== ============== ============   ===============\\
+  //  ===== ================== ========== ============== ============   ===============\\
 
   return (
     <div className="mainSelling p-relative">
@@ -152,10 +158,19 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
 
             <div className="info">
               <span>$ {product.pric}</span>
-              <i
-                className="bag bi-handbag"
-                onClick={() => buy(product._id)}
-              ></i>
+
+              <div
+                className={`Buy ${
+                  buying.find((p) => p._id == product._id && p.effect)
+                    ? "active"
+                    : ""
+                }`}
+              >
+                <i
+                  className="bag bi-handbag"
+                  onClick={() => buy(product._id)}
+                ></i>
+              </div>
             </div>
           </div>
         ))}
