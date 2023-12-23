@@ -1,51 +1,89 @@
 .mainTeam {
-  background-color: red;
+  background-color: rgb(237 242 251 / 100%);
   margin-bottom: 50px;
   overflow: hidden;
 }
 
 .mainTeam .intro {
+  color: var(--smain);
+  font-family: Dancing Script;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
   margin-top: var(--mrg-top);
-  margin-bottom: 50px;
+}
+
+.mainTeam p.brief-intro {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  width: 500px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffc133;
 }
 
 .mainTeam .boxex {
   gap: 20px;
+  margin-bottom: var(--mrg-bottom);
 }
 
 .mainTeam .boxex .box {
-  background-color: #fff;
+  background-color: rgb(237 242 251 / 50%);
   border-radius: 8px;
-  width: 350px;
-  height: 505px;
+  /* width: 350px;
+  height: 505px; */
   overflow: hidden;
   position: relative;
+  /* box-shadow: 0 2px 15px rgb(0 0 0 / 10%); */
+  transition: var(--main-transition);
 }
+
+.mainTeam .boxex .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 15px var(--smain);
+}
+
 .mainTeam .boxex .box .infoIcon {
   position: absolute;
   right: 15px;
   top: 15px;
   transform: translateY(10px);
-  background-color: red;
+  background-color: var(--smain);
   width: 24px;
   height: 24px;
   border-radius: 50%;
   text-align: center;
   color: white;
   cursor: pointer;
-  transition: 1s;
+  transition: 0.5s;
+  z-index: 1;
 }
 
 /* .mainTeam .boxex .box .infoIcon i {} */
 
 .mainTeam .boxex .box .infoIcon.active {
   width: calc(90%);
-  height: calc(50%);
+  height: calc(80%);
   border-radius: 0px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  z-index: 1;
 }
 
 .mainTeam .boxex .image {
   overflow: hidden;
+}
+.mainTeam .boxex .image .layer {
+  content: "";
+  position: absolute;
+  width: 96%;
+  height: 94%;
+  background-color: rgb(204 204 204 / 40%);
+  border-radius: 8px;
 }
 
 .mainTeam .boxex .image img {
@@ -64,16 +102,35 @@
   top: 50px;
   right: 50px;
   margin-right: -20px;
+  opacity: 0;
+  z-index: 1;
   /* display: none; */
+  /* transition: 5s; */
+}
+
+.mainTeam .boxex .box .information.active {
+  /* display: block; */
+  transition: 3s;
+  opacity: 1;
+  z-index: 1;
 }
 
 .mainTeam .boxex .box .information h4 {
-  color: green;
+  color: #134074;
   margin-top: 1rem;
   font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.mainTeam .boxex .box .information p.position {
+  color: #800f2f;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0;
 }
 
 .mainTeam .boxex .box .information p.desc {
-  color: green;
   width: 290px;
+  font-weight: bold;
+  color: beige;
 }

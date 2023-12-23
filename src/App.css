@@ -74,11 +74,11 @@ a {
   text-decoration: none;
 }
 
-body {
+/* body {
   /* background-color: var(--bgColor);/*/
-  /* overflow: hidden; */
-  /* height: 200v; */
-}
+/* overflow: hidden; */
+/* height: 200v; */ /*
+} */
 
 body::-webkit-scrollbar {
   display: none; /* this disepear the scroll bar */

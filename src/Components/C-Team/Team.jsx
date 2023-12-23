@@ -7,8 +7,9 @@ import { useState } from "react";
 const Team = () => {
   const [items, setItems] = useState(TeamData);
 
-  const [change, setChange] = useState(false);
-  console.log(change);
+  // const [change, setChange] = useState(false);
+  const [change, setChange] = useState([]);
+  // console.log(change);
 
   const clickICon = (id) => {
     const newChange = items.map((t) => {
@@ -24,9 +25,12 @@ const Team = () => {
 
       return t;
     });
-    console.log(newChange);
+    // console.log(newChange);
 
-    setChange(newChange);
+    // setChange(newChange);
+    // https://chat.openai.com/share/dbc47fa6-de38-409d-8470-126daaa26aec
+    // this link explain what happen it's simple but very important
+    setChange(newChange.filter((t) => t.active));
   };
 
   // =============================================\\
@@ -74,35 +78,52 @@ const Team = () => {
   // =============================================\\
   // =============================================\\
   // =============================================\\
-
+  //  flex-wrap
   return (
     <div className="mainTeam p-relative d-flex justif-content-center align-items-center flex-column">
       <h2 className="intro">Meet Our Expert</h2>
+      <p className="brief-intro">
+        Meet our exceptional team at Coffee-Time: I craft delicious brews, the
+        manager orchestrates, and the waiter serves with warmth. Welcome!
+      </p>
 
-      <div className="boxex container d-flex justif-content-between align-items-center p-4">
+      <div className="boxex container d-flex justif-content-between align-items-center flex-wrap p-4">
         {items &&
           items.length > 0 &&
           items.map((item) => (
-            <div className="box p-2 p-relative container" key={item._id}>
+            <div className="box p-2 p-relative" key={item._id}>
               <div
                 onClick={() => clickICon(item._id)}
                 // onClick={clickICon}
-                // className={`infoIcon ${change == true ? "active" : ""}`}
+                className={`infoIcon ${
+                  change.find((it) => it._id == item._id && it.active == true)
+                    ? "active"
+                    : ""
+                }`}
 
-                className={`infoIcon ${change.find((it) =>
-                  it._id == item._id && it.active ? "active" : ""
-                )}`}
+                // className={`infoIcon ${change.find((it) =>
+                //   it._id == item._id && it.active == true ? "active" : ""
+                // )}`}
+
+                // className={`infoIcon`}
               >
                 <i className="bi bi-info-lg"></i>
               </div>
 
-              <div className="image">
+              <div className="image p-relative">
+                <div className="layer"></div>
                 <img src={item.image} alt="" />
               </div>
 
-              <div className="information">
+              <div
+                className={`information ${
+                  change.find((it) => it._id == item._id && it.active == true)
+                    ? "active"
+                    : ""
+                }`}
+              >
                 <h4>{item.name}</h4>
-                <p>{item.position}</p>
+                <p className="position">{item.position}</p>
                 <p className="desc">{item.description}</p>
               </div>
             </div>

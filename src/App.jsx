@@ -12,6 +12,7 @@ import Selling from "./Components/C-Selling/Selling";
 import Team from "./Components/C-Team/Team";
 
 import dataProduct from "../src/Data-Api/product";
+import Reviews from "./Components/C-Reviwes/Reviews";
 
 export const AppContext = createContext();
 
@@ -32,6 +33,8 @@ function App() {
       </AppContext.Provider>
 
       <Team />
+
+      <Reviews />
     </>
   );
 }
