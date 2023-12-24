@@ -1,0 +1,11 @@
+.foteer {
+  background-color: red;
+  height: 40vh;
+}
+.foteer .boxe .allBox {
+  margin-top: 40px;
+}
+.foteer li {
+  font-size: 1rem;
+  font-weight: bold;
+}

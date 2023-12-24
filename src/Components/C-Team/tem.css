@@ -1,6 +1,6 @@
 .mainTeam {
   background-color: rgb(237 242 251 / 100%);
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   overflow: hidden;
 }
 
@@ -134,3 +134,14 @@
   font-weight: bold;
   color: beige;
 }
+
+/* ==== MEDIA QUERY ==== */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 1000px) {
+  .mainTeam .boxex {
+    justify-content: center;
+  }
+}
+
+/* ==== MEDIA QUERY ==== */

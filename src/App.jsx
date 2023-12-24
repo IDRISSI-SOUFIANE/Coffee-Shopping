@@ -10,9 +10,11 @@ import Header from "./Components/C-Header/Header";
 import Section from "./Components/C-Section/Section";
 import Selling from "./Components/C-Selling/Selling";
 import Team from "./Components/C-Team/Team";
+import Reviews from "./Components/C-Reviwes/Reviews";
+import Book from "./Components/C-Book/Book";
+import Foteer from "./Components/C-Foteer/foteer";
 
 import dataProduct from "../src/Data-Api/product";
-import Reviews from "./Components/C-Reviwes/Reviews";
 
 export const AppContext = createContext();
 
@@ -35,6 +37,10 @@ function App() {
       <Team />
 
       <Reviews />
+
+      <Book />
+
+      <Foteer />
     </>
   );
 }
