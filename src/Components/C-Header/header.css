@@ -7,6 +7,12 @@
   /* margin-bottom: var(--mrg-bottom); */
 }
 
+/* .mainBox .cover {
+  background-color: rgb(204 204 204 / 50%);
+  width: 100%;
+  height: 100%;
+} */
+
 .navBar {
   background: linear-gradient(
     135deg,
@@ -118,8 +124,9 @@ li a:hover:before {
 }
 
 .icons a {
-  color: var(--main);
+  color: mintcream;
   font-size: 1.4rem;
+  cursor: pointer;
 }
 
 i {
@@ -155,6 +162,119 @@ i span {
   font-size: 1.5rem;
   cursor: pointer;
   /* display: none; */
+}
+
+.mainBox .go-down {
+  color: var(--second);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: var(--main-transition);
+}
+.mainBox .go-down:hover {
+  color: var(--primary);
+}
+.mainBox .go-down i {
+  animation: bouncing 1.5s infinite;
+}
+
+@keyframes bouncing {
+  0%,
+  10%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40%,
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.department-heart {
+  position: fixed;
+  background-color: #edf2fb;
+  width: 25%;
+  height: 100%;
+  z-index: 2000 !important;
+  display: none;
+  transition-duration: 1s;
+  left: -265px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.department-heart::-webkit-scrollbar {
+  width: 5px;
+}
+
+.department-heart::-webkit-scrollbar-track {
+  background-color: #dcbfaa;
+  box-shadow: 0 0 10px #ddd inset;
+}
+
+.department-heart::-webkit-scrollbar-thumb {
+  background-color: var(--main);
+  border-radius: 10px;
+}
+
+.department-heart::-webkit-scrollbar-thumb:hover {
+  background-color: var(--smain);
+}
+
+.department-heart .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: mintcream;
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+.department-heart .box .image {
+  width: 90px;
+  height: 90px;
+  transform: translateY(-16px);
+  border-radius: 50%;
+  border: 3px solid #664d03;
+}
+
+.department-heart .box img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.department-heart .box p {
+  color: #664d03;
+  font-weight: bold;
+  padding: 0px 3px;
+  width: 100%;
+  text-align: center;
+  /* margin: 6px; */
+}
+
+.department-heart .box a {
+}
+
+.department-heart .box a i {
+  /* color: #664d03; */
+  color: red;
+}
+
+.department-heart.active {
+  left: 0px;
+  display: block;
 }
 
 /* ==== MEDIA QUERY ==== */
@@ -228,6 +348,10 @@ i span {
   .icons {
     gap: 10px;
     width: 20%;
+  }
+
+  .department-heart.active {
+    width: 50%;
   }
 }
 

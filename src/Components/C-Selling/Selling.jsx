@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../App";
 
 // eslint-disable-next-line react/prop-types
-const Selling = ({ setNumberLove, setNumberBuy }) => {
+const Selling = ({ setNumberLove, setNumberBuy, setDepartmentLove }) => {
   const { products } = useContext(AppContext);
 
   const initialLove = JSON.parse(localStorage.getItem("love")) || [];
@@ -105,6 +105,8 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
 
     // console.log(newProducts);
     setLove(newProducts);
+    // setDepartmentLove(newProducts);
+    setDepartmentLove(newProducts.filter((t) => t.active));
 
     // Save the state to localStorage
     localStorage.setItem("love", JSON.stringify(newProducts));
@@ -156,7 +158,7 @@ const Selling = ({ setNumberLove, setNumberBuy }) => {
             <p className="child1">{product.title}</p>
             <p className="child2">{product.subtitle}</p>
 
-            <div className="info">
+            <div className="infoinfo">
               <span>$ {product.pric}</span>
 
               <div

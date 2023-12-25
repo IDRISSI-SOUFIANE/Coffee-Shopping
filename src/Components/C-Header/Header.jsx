@@ -4,8 +4,12 @@ import logo from "../../assets/logo.jpg";
 import { useState, useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-const Header = ({ numberlove, numberBuy }) => {
+const Header = ({ numberlove, numberBuy, departmentLove }) => {
+  const departments = departmentLove;
+
   const [show, setShow] = useState(false);
+
+  const [clickHeart, setClickHeart] = useState(false);
 
   const showMenu = () => {
     if (show == false) {
@@ -31,8 +35,18 @@ const Header = ({ numberlove, numberBuy }) => {
     });
   }, []);
 
+  const clciked = () => {
+    console.log("clicked");
+    if (clickHeart == false) {
+      setClickHeart(true);
+    } else {
+      setClickHeart(false);
+    }
+  };
+
   return (
     <div className="mainBox">
+      <div className="cover"></div>
       <div className="navBar container">
         <div className="image">
           <img src={logo} alt="" />
@@ -60,7 +74,7 @@ const Header = ({ numberlove, numberBuy }) => {
         </ul>
 
         <div className="icons d-inline-flex align-items-center m-0 justify-content-between">
-          <a href="#" className="heart">
+          <a className="heart" onClick={clciked}>
             <i className="bi bi-heart-fill">
               <span className="information">{numberlove}</span>
             </i>
@@ -75,6 +89,26 @@ const Header = ({ numberlove, numberBuy }) => {
         <div className="barsclick">
           <i className="bars fa-solid fa-bars" onClick={showMenu}></i>
         </div>
+      </div>
+
+      <a href="#articles" className="go-down">
+        <i className="fas fa-angle-double-down fa-2x"></i>
+      </a>
+
+      <div className={`department-heart ${clickHeart == true ? "active" : ""}`}>
+        {departments &&
+          departments.length > 0 &&
+          departments.map((dep) => (
+            <div className="box" key={dep._id}>
+              <div className="image">
+                <img src={dep.image} alt="" />
+              </div>
+              <p>{dep.subtitle}</p>
+              <a href="#">
+                <i className="bi bi-heart-fill"></i>
+              </a>
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -1,11 +1,103 @@
 .foteer {
-  background-color: red;
+  background-color: rgb(210 218 231);
   height: 40vh;
 }
-.foteer .boxe .allBox {
+
+.foteer .boxe {
   margin-top: 40px;
 }
+
+.foteer .boxe .logo {
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-family: "Dancing Script";
+  color: #64320e;
+}
+
+.foteer .boxe .social {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.foteer .boxe .social a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.foteer .boxe .social a i {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.foteer .boxe .social a:nth-child(1) {
+  background-color: black;
+}
+
+.foteer .boxe .social a:nth-child(2) {
+  background-color: #64b5f6;
+}
+
+.foteer .boxe .social a:nth-child(3) {
+  background-color: cadetblue;
+}
+
 .foteer li {
+  position: relative;
   font-size: 1rem;
   font-weight: bold;
+  color: var(--smain);
+  cursor: pointer;
+  padding: 5px;
+  transition: var(--main-transition);
+  width: fit-content;
 }
+
+.foteer li:hover {
+  color: var(--second);
+}
+
+.foteer li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0px;
+  height: 2px;
+  background-color: #64320e;
+}
+
+.foteer li:hover::before {
+  width: 100%;
+  transition: var(--main-transition);
+}
+
+.foteer .signature {
+  position: absolute;
+  bottom: -85px;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ==== MEDIA QUERY ==== */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .row.footer {
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+  }
+  .col li {
+    display: none;
+  }
+}
+
+/* ==== MEDIA QUERY ==== */

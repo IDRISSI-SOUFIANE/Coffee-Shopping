@@ -25,13 +25,25 @@ function App() {
 
   const [numberBuy, setNumberBuy] = useState(null);
 
+  const [departmentLove, setDepartmentLove] = useState(null);
+
+  console.log(departmentLove);
+
   return (
     <>
-      <Header numberlove={numberlove} numberBuy={numberBuy} />
+      <Header
+        numberlove={numberlove}
+        numberBuy={numberBuy}
+        departmentLove={departmentLove}
+      />
       <Section />
 
       <AppContext.Provider value={{ products }}>
-        <Selling setNumberLove={setNumberLove} setNumberBuy={setNumberBuy} />
+        <Selling
+          setNumberLove={setNumberLove}
+          setNumberBuy={setNumberBuy}
+          setDepartmentLove={setDepartmentLove}
+        />
       </AppContext.Provider>
 
       <Team />

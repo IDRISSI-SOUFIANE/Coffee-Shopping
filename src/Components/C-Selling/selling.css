@@ -84,7 +84,7 @@
   border-radius: 20px;
 }
 
-.mainSelling .boxes .box .info {
+.mainSelling .boxes .box .infoinfo {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -92,11 +92,11 @@
   margin-top: 20px;
 }
 
-.mainSelling .boxes .box .info span {
+.mainSelling .boxes .box .infoinfo span {
   flex-basis: 40%;
 }
 
-.mainSelling .boxes .box .info i {
+.mainSelling .boxes .box .infoinfo i {
   cursor: pointer;
 }
 
@@ -124,7 +124,7 @@
   margin-right: 10px;
 }
 
-.mainSelling .boxes .box .info .Buy.active > i.bag {
+.mainSelling .boxes .box .infoinfo .Buy.active > i.bag {
   color: red;
 }
 

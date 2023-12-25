@@ -25,7 +25,7 @@ const Team = () => {
 
       return t;
     });
-    // console.log(newChange);
+    console.log(newChange);
 
     // setChange(newChange);
     // https://chat.openai.com/share/dbc47fa6-de38-409d-8470-126daaa26aec
