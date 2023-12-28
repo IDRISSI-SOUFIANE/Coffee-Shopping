@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import "./selling.css";
 import { useContext, useState, useEffect } from "react";
-import { AppContext } from "../../App";
+import { AppContext } from "../../C-HomePage/HomePage";
 
-// eslint-disable-next-line react/prop-types
-const Selling = ({ setNumberLove, setNumberBuy, setDepartmentLove }) => {
+const Selling = ({
+  setNumberLove,
+  setNumberBuy,
+  setDepartmentLove,
+  setDepartmentPurchase,
+}) => {
   const { products } = useContext(AppContext);
 
   const initialLove = JSON.parse(localStorage.getItem("love")) || [];
@@ -63,6 +68,9 @@ const Selling = ({ setNumberLove, setNumberBuy, setDepartmentLove }) => {
     // console.log(productBuy);
     setBuying(productBuy);
 
+    // setDepartmentPurchase(productBuy);
+    setDepartmentPurchase(productBuy.filter((p) => p.effect));
+
     // Save the state to localStorage
     localStorage.setItem("buy", JSON.stringify(productBuy));
   };
@@ -116,7 +124,7 @@ const Selling = ({ setNumberLove, setNumberBuy, setDepartmentLove }) => {
   //  ===== ================== ========== ============== ============   ===============\\
 
   return (
-    <div className="mainSelling p-relative">
+    <div className="mainSelling p-relative" id="Product">
       <div className="introduce p-relative">
         <h2>Our Top Selling Product</h2>
         <p>

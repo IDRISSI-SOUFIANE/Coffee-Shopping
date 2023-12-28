@@ -92,14 +92,18 @@ ul::before {
   display: none;
 }
 
-ul li a {
+ul li {
+  font-size: 1.5rem;
+}
+
+ul li .a {
   color: var(--second);
   transition: 0.3s;
   cursor: pointer;
   text-decoration: none;
 }
 
-li a:hover {
+li .a:hover {
   color: var(--primary);
 }
 
@@ -124,7 +128,7 @@ li a:hover:before {
 }
 
 .icons a {
-  color: mintcream;
+  color: var(--smain);
   font-size: 1.4rem;
   cursor: pointer;
 }
@@ -143,7 +147,7 @@ i span {
   font-weight: bold;
   width: 20px;
   height: 20px;
-  background: red;
+  background: mintcream;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -171,6 +175,7 @@ i span {
   left: 50%;
   transform: translateX(-50%);
   transition: var(--main-transition);
+  cursor: pointer;
 }
 .mainBox .go-down:hover {
   color: var(--primary);
@@ -202,7 +207,7 @@ i span {
   z-index: 2000 !important;
   display: none;
   transition-duration: 1s;
-  left: -265px;
+  left: -400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,6 +319,7 @@ i span {
     padding: 5px;
     width: 100%;
     position: relative;
+    font-size: 1.2rem;
   }
 
   ul.no-active li {

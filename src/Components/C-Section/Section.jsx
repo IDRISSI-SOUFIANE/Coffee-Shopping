@@ -9,7 +9,7 @@ const Section = () => {
 
   // console.log(items);
   return (
-    <div className="mainSection p-relative">
+    <div className="mainSection p-relative" id="Services">
       <div className="introduce p-relative">
         <h2>Indulge in Handcrafted Coffee Elegance</h2>
       </div>

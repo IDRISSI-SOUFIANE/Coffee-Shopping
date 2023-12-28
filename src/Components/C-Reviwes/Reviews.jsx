@@ -111,7 +111,7 @@ import "swiper/css";
 const Reviews = () => {
   const reviews = DataSwiper;
   return (
-    <div className="review">
+    <div className="review" id="Reviews">
       <div className="start">
         <h2>Customerm's Reviews</h2>
         <h5>

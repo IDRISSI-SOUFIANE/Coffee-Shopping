@@ -80,7 +80,10 @@ const Team = () => {
   // =============================================\\
   //  flex-wrap
   return (
-    <div className="mainTeam p-relative d-flex justif-content-center align-items-center flex-column">
+    <div
+      className="mainTeam p-relative d-flex justif-content-center align-items-center flex-column"
+      id="Team"
+    >
       <h2 className="intro">Meet Our Expert</h2>
       <p className="brief-intro">
         Meet our exceptional team at Coffee-Time: I craft delicious brews, the

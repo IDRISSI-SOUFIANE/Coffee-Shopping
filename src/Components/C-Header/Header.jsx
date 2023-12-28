@@ -1,11 +1,32 @@
 import "./header.css";
 import logo from "../../assets/logo.jpg";
 
+import { Link } from "react-router-dom";
+
+// import { Link } from "react-scroll";
+
 import { useState, useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ numberlove, numberBuy, departmentLove }) => {
-  const departments = departmentLove;
+  useEffect(() => {
+    if (departmentLove) {
+      //  loaclastorage to work should be change from object to string why?
+      //  => caus LocalStorage just save strings ""
+      const serializedDepartmentLove = JSON.stringify(departmentLove);
+      localStorage.setItem("departments", serializedDepartmentLove);
+    }
+  }, [departmentLove]);
+
+  const storedDepartmentLove = localStorage.getItem("departments");
+  const lovedepartments = storedDepartmentLove
+    ? JSON.parse(storedDepartmentLove)
+    : null;
+  // console.log(lovedepartments);
+
+  //  =============== ================= ===============s
+  //  =============== ================= ===============
+  //  =============== ================= ===============
 
   const [show, setShow] = useState(false);
 
@@ -45,31 +66,109 @@ const Header = ({ numberlove, numberBuy, departmentLove }) => {
   };
 
   return (
-    <div className="mainBox">
+    <div className="mainBox" id="Home">
       <div className="cover"></div>
       <div className="navBar container">
         <div className="image">
           <img src={logo} alt="" />
         </div>
 
-        <ul className={`${show == true ? "active" : "no-active"}`}>
+        {/* <ul className={`links ${show == true ? "active" : "no-active"}`}>
           <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
-          </li>
-
-          <li>
-            <a href="#">Product </a>
-          </li>
-
-          <li>
-            <a href="#">Team</a>
+            <Link
+              className="a"
+              to="Home"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
+              Home
+            </Link>
           </li>
 
           <li>
-            <a href="#">Reviews </a>
+            <Link
+              className="a"
+              to="Services"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
+              Services
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              className="a"
+              to="Product"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
+              Product
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              className="a"
+              to="Team"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
+              Team
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              className="a"
+              to="Reviews"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
+              Reviews
+            </Link>
+          </li>
+        </ul> */}
+
+        <ul className={`links ${show == true ? "active" : "no-active"}`}>
+          <li>
+            <a className="dropdown-item a" href="#Home">
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a className="dropdown-item a" href="#Services">
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a className="dropdown-item a" href="#Product">
+              Product
+            </a>
+          </li>
+
+          <li>
+            <a className="dropdown-item a" href="#Team">
+              Team
+            </a>
+          </li>
+
+          <li>
+            <a className="dropdown-item a" href="#Reviews">
+              Reviews
+            </a>
           </li>
         </ul>
 
@@ -79,11 +178,11 @@ const Header = ({ numberlove, numberBuy, departmentLove }) => {
               <span className="information">{numberlove}</span>
             </i>
           </a>
-          <a href="#" className="bag">
+          <Link to={"/purchase"} className="bag">
             <i className="bi bi-bag-fill">
               <span className="information">{numberBuy}</span>
             </i>
-          </a>
+          </Link>
         </div>
 
         <div className="barsclick">
@@ -91,14 +190,18 @@ const Header = ({ numberlove, numberBuy, departmentLove }) => {
         </div>
       </div>
 
-      <a href="#articles" className="go-down">
+      {/* <a href="#articles" className="go-down">
+        <i className="fas fa-angle-double-down fa-2x"></i>
+      </a> */}
+
+      <a className="go-down" href="#Services">
         <i className="fas fa-angle-double-down fa-2x"></i>
       </a>
 
       <div className={`department-heart ${clickHeart == true ? "active" : ""}`}>
-        {departments &&
-          departments.length > 0 &&
-          departments.map((dep) => (
+        {lovedepartments &&
+          lovedepartments.length > 0 &&
+          lovedepartments.map((dep) => (
             <div className="box" key={dep._id}>
               <div className="image">
                 <img src={dep.image} alt="" />
