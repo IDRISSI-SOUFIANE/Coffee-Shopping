@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Bootstrap Icons
@@ -17,7 +18,7 @@ import dataProduct from "../../src/Data-Api/product";
 
 export const AppContext = createContext();
 
-const HomePage = () => {
+const HomePage = ({ setDepartmentPurchase }) => {
   const [products] = useState(dataProduct);
 
   const [numberlove, setNumberLove] = useState(null);
@@ -26,9 +27,9 @@ const HomePage = () => {
 
   const [departmentLove, setDepartmentLove] = useState(null);
 
-  const [departmentPurchase, setDepartmentPurchase] = useState(null);
+  // const [departmentPurchase, setDepartmentPurchase] = useState(null);
 
-  console.log(departmentPurchase);
+  // console.log(departmentPurchase);
 
   return (
     <>

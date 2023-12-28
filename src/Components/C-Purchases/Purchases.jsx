@@ -1,64 +1,57 @@
+/* eslint-disable react/prop-types */
 import "./purchases.css";
 
-import logo from "../../assets/images/logo.jpg";
+import { useEffect } from "react";
 
 const Purchases = ({ departmentPurchase }) => {
   console.log(departmentPurchase);
+
+  useEffect(() => {
+    if (departmentPurchase) {
+      //  loaclastorage to work should be change from object to string why?
+      //  => caus LocalStorage just save strings ""
+      const serializedDepartmentPurchase = JSON.stringify(departmentPurchase);
+      localStorage.setItem("departmentsPurchase", serializedDepartmentPurchase);
+    }
+  }, [departmentPurchase]);
+
+  const storedDepartmentPurchase = localStorage.getItem("departmentsPurchase");
+  const Purchaseepartments = storedDepartmentPurchase
+    ? JSON.parse(storedDepartmentPurchase)
+    : null;
+
+  console.log(Purchaseepartments);
+
   return (
-    <div className="box container d-flex justify-content-between align-items-center">
-      <div className="image">
-        <img src={logo} alt="" />
-      </div>
+    // <div className="box container d-flex justify-content-between align-items-center"></div>
 
-      <div className="details-box">
-        <h1>Here is the single Product Name and Information</h1>
-        <p>Availablity (In Stock)</p>
-        <h2>$ 344.99</h2>
+    <div className="box d-flex justify-content-center align-items-center flex-column gap-5">
+      <table>
+        <thead>
+          <tr>
+            <td>Product</td>
+            <td>Product-Name</td>
+            <td>Avaialble</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          {Purchaseepartments &&
+            Purchaseepartments.length > 0 &&
+            Purchaseepartments.map((Purchase) => (
+              <tr key={Purchase._id}>
+                <td className="image">
+                  <img src={Purchase.image} alt="" />
+                </td>
+                <td>{Purchase.subtitle}</td>
+                <td>{Purchase.title}</td>
+                <td>{Purchase.pric} $</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
 
-        <table className="inputs">
-          <tbody>
-            <tr>
-              <td>Quantity</td>
-              <td align="right">
-                <input type="number" id="first" />
-              </td>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Sub Total</td>
-              <td align="right">
-                <input type="number" id="second" />
-              </td>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Sales Tax 5.7%</td>
-              <td align="right">
-                <input type="number" id="third" />
-              </td>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <td>Total</td>
-              <td align="right">
-                <input type="number" id="fourth" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h4>Spcification</h4>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum,
-          commodi.
-        </p>
-        <button>Add To Cart</button>
-      </div>
+      <button>Shopping Now</button>
     </div>
   );
 };
