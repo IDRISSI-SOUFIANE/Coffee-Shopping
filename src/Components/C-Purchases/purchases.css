@@ -44,3 +44,93 @@ button {
 button:hover {
   background-color: darkgreen;
 }
+
+.department-Buy {
+  /* opacity: 0;
+  visibility: hidden; */
+}
+
+.department-Buy.effect {
+  position: absolute;
+  background-color: var(--main);
+  width: 65%;
+  height: 65%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+  border-radius: 8px;
+  /* transform: scale(1); */
+}
+
+.department-Buy.active {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  transition: 1s;
+}
+
+.department-Buy .x {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  color: var(--smain);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boxcontain {
+  padding: 15px;
+}
+
+.boxcontain input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+}
+
+.boxcontain .field-name input {
+}
+
+.boxcontain .field-name input:nth-child(1) {
+  width: 50%;
+}
+.boxcontain .field-name input:nth-child(2) {
+  width: 50%;
+}
+
+.boxcontain .number {
+  /* width: 100%; */
+}
+
+.number input {
+}
+
+.boxcontain .field-card input {
+  border-radius: 0px;
+}
+
+.section {
+  width: 100%;
+}
+
+select {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.address input {
+  border-radius: 0px;
+}
+
+button.pay {
+  width: 100%;
+}
