@@ -21,6 +21,7 @@ function App() {
           path="/"
           element={<HomePage setDepartmentPurchase={setDepartmentPurchase} />}
         />
+
         <Route
           path="/purchase"
           element={<Purchases departmentPurchase={departmentPurchase} />}

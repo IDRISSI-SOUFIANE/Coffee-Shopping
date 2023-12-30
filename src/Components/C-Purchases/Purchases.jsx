@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+import SnackBar from "../C-SnackBar/SnackBar";
 import "./purchases.css";
+
+import masterCard from "../../assets/visaCards/02.png";
+import plateniumCard from "../../assets/visaCards/03.png";
 
 import { useEffect, useState } from "react";
 
@@ -8,8 +12,19 @@ const Purchases = ({ departmentPurchase }) => {
 
   const [total, setTotal] = useState(null);
 
-  const [close, setClose] = useState(false);
   const [show, setShow] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
+  const [loanInput, setLoanInput] = useState({
+    firstName: "",
+    lastName: "",
+    number: "",
+    card: "",
+    cardTime: "",
+    cardCvc: "",
+    citySelect: "",
+  });
 
   useEffect(() => {
     if (departmentPurchase) {
@@ -38,10 +53,10 @@ const Purchases = ({ departmentPurchase }) => {
   }, [Purchaseepartments]);
 
   const closePoUp = () => {
-    if (close == false) {
-      setClose(true);
+    if (show == false) {
+      setShow(true);
     } else {
-      setClose(false);
+      setShow(false);
     }
   };
 
@@ -53,9 +68,33 @@ const Purchases = ({ departmentPurchase }) => {
     }
   };
 
-  return (
-    // <div className="box container d-flex justify-content-between align-items-center"></div>
+  const showHideToast = () => {
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+    }, 2000);
+  };
 
+  function handleFormSubmmit(event) {
+    event.preventDefault();
+  }
+
+  const btnIsDisabled =
+    loanInput.firstName == "" ||
+    loanInput.lastName == "" ||
+    loanInput.number == "" ||
+    loanInput.card == "" ||
+    loanInput.cardTime == "" ||
+    loanInput.cardCvc == "" ||
+    loanInput.citySelect == "";
+
+  const hideFormm = () => {
+    if (btnIsDisabled == false) {
+      setShow(false);
+    }
+  };
+
+  return (
     <div className="box d-flex justify-content-center align-items-center flex-column gap-5">
       <table>
         <thead>
@@ -88,55 +127,111 @@ const Purchases = ({ departmentPurchase }) => {
 
       <button onClick={showPoUp}>Shopping Now</button>
 
-      <div
-        className={`department-Buy ${show ? "effect" : ""} ${
-          close == true ? "active" : ""
-        }`}
-      >
-        <div className="box">
-          <div className="image">
-            <img src={""} alt="" />
-          </div>
-          <div className="boxcontain flex-column">
-            <div className="field-name d-flex justify-content-between align-items-center gap-3 mb-3">
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="last Name" />
-            </div>
-
-            <div className="number mb-3">
-              <input type="text" placeholder="Your-Number" />
-            </div>
-
-            <div className="field-card d-flex flex-column mb-3">
-              <div className="card">
-                <input type="text" placeholder="1234 1234 1234 1234" />
-              </div>
-              <div className="card-info d-flex justify-content-between align-items-center">
-                <input type="text" placeholder="MM / YY" />
-                <input type="text" placeholder="CVC" />
-              </div>
-            </div>
-
-            <div className="Biling-address mb-3">
-              <div className="section">
-                <select>
-                  <option value="">Casa-Blanca</option>
-                  <option value="">Settat</option>
-                  <option value="">Mohamedia</option>
-                </select>
-              </div>
-              <div className="address">
-                <input type="text" placeholder="Address Line 1" />
-                <input type="text" placeholder="Address Line 2" />
-              </div>
-            </div>
-
-            <button className="pay">Pay</button>
-          </div>
-
-          <i className="x fa-regular fa-circle-xmark" onClick={closePoUp}></i>
+      <div className={`department-Buy ${show ? "show" : ""} flex-column`}>
+        {/* <div className="boxcontain flex-column"> */}
+        <div className="field-name d-flex justify-content-between align-items-center gap-3 mb-3">
+          <input
+            type="text"
+            placeholder="First Name"
+            value={loanInput.firstName}
+            onChange={(e) =>
+              setLoanInput({ ...loanInput, firstName: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="last Name"
+            value={loanInput.lastName}
+            onChange={(e) =>
+              setLoanInput({ ...loanInput, lastName: e.target.value })
+            }
+          />
         </div>
+
+        <div className="number mb-3">
+          <input
+            type="text"
+            placeholder="Your-Number"
+            value={loanInput.number}
+            onChange={(e) =>
+              setLoanInput({ ...loanInput, number: e.target.value })
+            }
+          />
+        </div>
+
+        <div className="field-card d-flex flex-column mb-3">
+          <div className="card">
+            <input
+              type="text"
+              placeholder="1234 1234 1234 1234"
+              value={loanInput.card}
+              onChange={(e) =>
+                setLoanInput({ ...loanInput, card: e.target.value })
+              }
+            />
+            <div className="imageCard">
+              <img src={masterCard} alt="" />
+              <img src={plateniumCard} alt="" />
+            </div>
+          </div>
+
+          <div className="card-info d-flex justify-content-between align-items-center">
+            <input
+              type="text"
+              placeholder="MM / YY"
+              value={loanInput.cardTime}
+              onChange={(e) =>
+                setLoanInput({ ...loanInput, cardTime: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="CVC"
+              value={loanInput.cardCvc}
+              onChange={(e) =>
+                setLoanInput({ ...loanInput, cardCvc: e.target.value })
+              }
+            />
+          </div>
+        </div>
+
+        <div className="Biling-address mb-3">
+          <div className="section">
+            <select
+              value={loanInput.citySelect}
+              onChange={(e) =>
+                setLoanInput({ ...loanInput, citySelect: e.target.value })
+              }
+            >
+              <option value="Choose-City">Choose-City</option>
+              <option value="Casa-Blanca">Casa-Blanca</option>
+              <option value="Settat">Settat</option>
+              <option value="Mohamedia">Mohamedia</option>
+            </select>
+          </div>
+          <div className="address">
+            <input type="text" placeholder="Address Line 1" />
+            <input type="text" placeholder="Address Line 2" />
+          </div>
+        </div>
+
+        <button
+          className={`pay ${btnIsDisabled ? "disabled" : ""}`}
+          onClick={() => {
+            showHideToast();
+            handleFormSubmmit(event);
+            hideFormm();
+          }}
+          disabled={btnIsDisabled}
+        >
+          Pay
+        </button>
+        {/* </div> */}
+
+        <i className="x fa-regular fa-circle-xmark" onClick={closePoUp}></i>
       </div>
+
+      <SnackBar open={open} />
     </div>
   );
 };
